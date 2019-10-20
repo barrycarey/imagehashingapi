@@ -18,12 +18,14 @@ class ImageHashApi:
 
         if not url:
             print('did not get url')
+            resp.status = falcon.HTTP_400
             return
 
         img = self._generate_img_from_url(url)
 
         if not img:
             print('failed to get img')
+            resp.status = falcon.HTTP_400
             return
 
         result = self._get_hashes(img)
@@ -69,4 +71,4 @@ class ImageHashApi:
 api = falcon.API()
 api.add_route('/hash', ImageHashApi())
 
-#serve(api, host='localhost', port=8800, threads=15)
+#serve(api, host='localhost', port=8000, threads=15)
