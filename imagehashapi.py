@@ -21,6 +21,8 @@ class ImageHashApi:
             resp.status = falcon.HTTP_400
             return
 
+        print(f'Image hash request for URL {url}')
+
         img = self._generate_img_from_url(url)
 
         if not img:
