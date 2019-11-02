@@ -14,6 +14,7 @@ class ImageHashApi:
 
     def on_get(self, req, resp):
 
+        print('Got req: ' + str(req))
         url = req.get_param('url')
 
         if not url:
@@ -70,6 +71,7 @@ class ImageHashApi:
 
 class Health:
     def on_get(self, req, resp):
+        print('Got req: ' + str(req))
         resp.body = json.dumps({'status': 'ok'})
 
 api = falcon.API()
