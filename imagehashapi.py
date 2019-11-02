@@ -68,9 +68,12 @@ class ImageHashApi:
 
         return result
 
-
+class Health:
+    def on_get(self, req, resp):
+        resp.body = json.dumps({'status': 'ok'})
 
 api = falcon.API()
 api.add_route('/hash', ImageHashApi())
+api.add_route('/health', Health())
 
-#serve(api, host='localhost', port=8000, threads=15)
+serve(api, host='localhost', port=8000, threads=15)
